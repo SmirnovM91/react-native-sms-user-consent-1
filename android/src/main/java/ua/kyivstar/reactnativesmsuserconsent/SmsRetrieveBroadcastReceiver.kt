@@ -20,7 +20,8 @@ class SmsRetrieveBroadcastReceiver(currentActivity: Activity?): BroadcastReceive
   private var activity: Activity? = currentActivity
 
   override fun onReceive(context: Context?, intent: Intent) {
-    if (SmsRetriever.SMS_RETRIEVED_ACTION.equals(intent.action)) {
+
+    if (SmsRetriever.SMS_RETRIEVED_ACTION.equals(intent.action) && ((getCallingActivity() != null && getCallingActivity().getPackageName().equals(BuildConfig.APPLICATION_ID))) {
       val extras = intent.extras
       val smsRetrieverStatus = extras?.get(SmsRetriever.EXTRA_STATUS) as Status
       val statusCode: Int = smsRetrieverStatus.getStatusCode()
