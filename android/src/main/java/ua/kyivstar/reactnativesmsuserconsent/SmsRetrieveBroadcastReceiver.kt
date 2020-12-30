@@ -22,7 +22,7 @@ class SmsRetrieveBroadcastReceiver(currentActivity: Activity?): BroadcastReceive
   override fun onReceive(context: Context?, intent: Intent) {
 
      if (SmsRetriever.SMS_RETRIEVED_ACTION.equals(intent.action) && 
-    (activity!!.getPackageName().equals("kz.gov.kgd.android"))
+    (activity!!.getPackageName().equals("dev.amsmirnov.slombard"))
     )
     {
       val extras = intent.extras
