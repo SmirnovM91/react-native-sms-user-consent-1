@@ -21,7 +21,10 @@ class SmsRetrieveBroadcastReceiver(currentActivity: Activity?): BroadcastReceive
 
   override fun onReceive(context: Context?, intent: Intent) {
 
-    if (SmsRetriever.SMS_RETRIEVED_ACTION.equals(intent.action) && ((getCallingActivity() != null && getCallingActivity().getPackageName().equals(BuildConfig.APPLICATION_ID))) {
+     if (SmsRetriever.SMS_RETRIEVED_ACTION.equals(intent.action) && 
+    (activity!!.getPackageName().equals("kz.gov.kgd.android"))
+    )
+    {
       val extras = intent.extras
       val smsRetrieverStatus = extras?.get(SmsRetriever.EXTRA_STATUS) as Status
       val statusCode: Int = smsRetrieverStatus.getStatusCode()
