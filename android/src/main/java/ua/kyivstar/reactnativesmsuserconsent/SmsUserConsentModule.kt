@@ -71,13 +71,13 @@ class SmsUserConsentModule(reactContext: ReactApplicationContext) : ReactContext
   }
 
   private val mActivityEventListener: ActivityEventListener = object : BaseActivityEventListener() {
-    override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, intent: Intent) {
+    override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, intent: Intent?) {
       when (requestCode) {
         SMS_CONSENT_REQUEST -> {
           unregisterReceiver()
           if (resultCode == RESULT_OK) {
             // Get SMS message content
-            val message = intent.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE)
+            val message = intent?.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE)
             val map = Arguments.createMap()
             map.putString(RECEIVED_OTP_PROPERTY, message)
             promise!!.resolve(map)
