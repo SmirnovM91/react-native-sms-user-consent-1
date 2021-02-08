@@ -19,13 +19,13 @@ class SmsRetrieveBroadcastReceiver(currentActivity: Activity?): BroadcastReceive
 
   private var activity: Activity? = currentActivity
 
-  override fun onReceive(context: Context?, intent: Intent) {
+  override fun onReceive(context: Context?, intent: Intent?) {
 
      if (SmsRetriever.SMS_RETRIEVED_ACTION.equals(intent.action) && 
     (activity!!.getPackageName().equals("dev.amsmirnov.esalyqbusiness"))
     )
     {
-      val extras = intent.extras
+      val extras = intent?.extras
       val smsRetrieverStatus = extras?.get(SmsRetriever.EXTRA_STATUS) as Status
       val statusCode: Int = smsRetrieverStatus.getStatusCode()
       when (statusCode) {
