@@ -70,7 +70,7 @@ class SmsUserConsentModule(reactContext: ReactApplicationContext) : ReactContext
       receiver = null
     }
    }
-   catch(Exception e) {
+   catch (exception: Exception){
      
    }
   }
