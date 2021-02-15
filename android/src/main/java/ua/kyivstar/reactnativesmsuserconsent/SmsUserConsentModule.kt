@@ -64,10 +64,15 @@ class SmsUserConsentModule(reactContext: ReactApplicationContext) : ReactContext
   }
 
   private fun unregisterReceiver() {
-    if (receiver != null) {
+   try {
+      if (receiver != null) {
       reactContext!!.currentActivity!!.unregisterReceiver(receiver)
       receiver = null
     }
+   }
+   catch(Exception e) {
+     
+   }
   }
 
   private val mActivityEventListener: ActivityEventListener = object : BaseActivityEventListener() {
